@@ -1,0 +1,26 @@
+name: agentic workflow
+on: 
+   push:
+   workflow_dispatch:
+      
+permissions:
+  contents: read
+  copilot-requests: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: checkout code 
+        uses: actions/checkout@v4
+
+      - name: install gh cli
+        uses: actions4gh/setup-gh@v1
+        with:
+          gh-version: latest
+
+      - name: check gh cli version
+        run: gh --version
+
+      
